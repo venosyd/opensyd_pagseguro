@@ -1,0 +1,42 @@
+###
+### Adicionar isso na pasta
+### assets/config/ do seu servidor
+###
+
+# base que vai armazenar
+# os dados das transacoes
+bancodedados: ---------
+
+## endereco da empresa
+addr-rua: ---------
+addr-numero: ---------
+addr-bairro: ---------
+addr-cep: ---------
+addr-cidade: ---------
+addr-estado: ---------
+
+## credenciais de acesso
+credential: ---------
+token: ---------
+
+## url's basicas
+url: https://pagseguro.uol.com.br # producao
+ws: https://ws.pagseguro.uol.com.br # producao
+stc: https://stc.pagseguro.uol.com.br # producao
+redirection-url: ---------
+
+## url's de funcoes
+# sessao
+create-session: /v2/sessions?email={{email}}&token={{token}}
+# cartao de credito
+cc-brand: https://df.uol.com.br/df-fe/mvc/creditcard/v1/getBin?tk={{sessionID}}&creditCard={{ccBin}}
+cc-token: https://df.uol.com.br/v2/cards
+get-parcelas: /checkout/v2/installments.json?sessionId={{sessionID}}&amount={{amount}}&creditCardBrand={{ccBrand}}
+# checkout
+do-checkout: /v2/transactions?email={{email}}&token={{token}}
+see-checkout: /v3/transactions/{{transactionID}}?email={{email}}&token={{token}}
+# planos/assinatura
+create-plan: /pre-approvals/request/?email={{email}}&token={{token}}
+do-subscription: /pre-approvals?email={{email}}&token={{token}}
+see-subscription: /pre-approvals/{{subscriptionID}}?email={{email}}&token={{token}}
+cancel-subscription: /pre-approvals/{{subscriptionID}}/cancel?email={{email}}&token={{token}}

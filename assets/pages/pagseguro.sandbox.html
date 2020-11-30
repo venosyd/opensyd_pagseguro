@@ -1,0 +1,29 @@
+<html>
+
+<body>
+    <p id="status">loading</p>
+
+    <script type="text/javascript"
+        src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
+        </script>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const sessionID = urlParams.get('sessionID')
+
+        PagSeguroDirectPayment.setSessionId(sessionID);
+        PagSeguroDirectPayment.onSenderHashReady(function (response) {
+            if (response.status == 'error') {
+                document.getElementById("status").innerHTML = response.message;
+                return false;
+            }
+
+            var hash = response.senderHash;
+            document.getElementById("status").innerHTML = hash;
+            Print.postMessage(hash);
+        });
+    </script>
+</body>
+
+</html>
