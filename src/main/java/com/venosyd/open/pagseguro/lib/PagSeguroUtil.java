@@ -20,8 +20,7 @@ public class PagSeguroUtil {
 
     /** */
     public PagSeguroUtil() {
-        conta = "pagseguro";
-        config = new PagSeguroConfig(conta);
+        config = new PagSeguroConfig();
     }
 
     /** */
