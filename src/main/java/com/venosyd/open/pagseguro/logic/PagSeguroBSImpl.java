@@ -53,7 +53,7 @@ public class PagSeguroBSImpl implements PagSeguroBS, Debuggable {
 
     @Override
     public Map<String, Object> createPlan(String conta, String planoNome, String planoSigla,
-            String planoURLCancelamento, String planoPreco) {
+            String planoURLCancelamento, String planoPreco, String trialPeriod) {
         var util = conta != null ? new PagSeguroUtil(conta) : new PagSeguroUtil();
 
         var email = credential(conta);
@@ -74,12 +74,13 @@ public class PagSeguroBSImpl implements PagSeguroBS, Debuggable {
                 + "         <amountPerPayment>{{plan-price}}</amountPerPayment>                     "
                 + "         <cancelURL>{{plan-cancel-url}}</cancelURL>                              "
                 + "         <membershipFee>0.00</membershipFee>                                     "
-                + "         <trialPeriodDuration>1</trialPeriodDuration>                            "
+                + "         <trialPeriodDuration>{{trial-period}}</trialPeriodDuration>             "
                 + "     </preApproval>                                                              "
                 + "     <maxUses>100000</maxUses>                                                   "
                 + "</preApprovalRequest>                                                            ";
 
         xml = xml.replace("{{plan-name}}", planoNome);
+        xml = xml.replace("{{trial-period}}", trialPeriod);
         xml = xml.replace("{{plan-reference}}", planoSigla);
         xml = xml.replace("{{plan-cancel-url}}", planoURLCancelamento);
 

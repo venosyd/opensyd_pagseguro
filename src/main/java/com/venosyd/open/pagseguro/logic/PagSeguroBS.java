@@ -29,6 +29,6 @@ public interface PagSeguroBS {
          * Cria um plano
          */
         Map<String, Object> createPlan(String conta, String planoNome, String planoSigla, String planoURLCancelamento,
-                        String planoPreco);
+                        String planoPreco, String trialPeriod);
 
 }

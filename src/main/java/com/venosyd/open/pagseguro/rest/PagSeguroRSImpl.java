@@ -89,9 +89,12 @@ public class PagSeguroRSImpl implements PagSeguroRS, RESTService {
             var planoSigla = request.get("planoSigla");
             var planoURLCancelamento = request.get("planoURLCancelamento");
             var planoPreco = request.get("planoPreco");
+            var trialPeriod = request.get("trialPeriod");
+            if (trialPeriod == null)
+                trialPeriod = "1";
 
-            var result = PagSeguroBS.INSTANCE.createPlan(conta, planoNome, planoSigla, planoURLCancelamento,
-                    planoPreco);
+            var result = PagSeguroBS.INSTANCE.createPlan(conta, planoNome, planoSigla, planoURLCancelamento, planoPreco,
+                    trialPeriod);
 
             if (result != null && !result.containsKey("error")) {
                 response.put("status", "ok");
