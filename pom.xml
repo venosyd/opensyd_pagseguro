@@ -3,7 +3,7 @@
     <!-- project data -->
     <groupId>com.venosyd.open</groupId>
     <artifactId>opensyd-pagseguro</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.1</version>
     <packaging>jar</packaging>
 
     <name>opensyd-pagseguro</name>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>com.venosyd.open</groupId>
             <artifactId>opensyd-commons</artifactId>
-            <version>3.0.0</version>
+            <version>3.1.0</version>
         </dependency>
     </dependencies>
 </project>
